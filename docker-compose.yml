@@ -31,5 +31,19 @@ services:
       DB_PORT: 5432
       DB_SSL_MODE: disable
 
+  front:
+    build:
+      context: ../producto_fullstack/
+      dockerfile: Dockerfile
+    command: npm start
+    ports:
+      - "3000:3000"
+    depends_on:
+      - api
+    environment:
+      REACT_APP_USERNAME: user
+      REACT_APP_API_KEY: pass
+      REACT_APP_TABLE_NAME:
+
 volumes:
   pgdata:
