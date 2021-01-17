@@ -39,3 +39,7 @@ bash-5.1#./opiapi --file=data/puntos_examen_fullstack.csv
 The file data/puntos_examen_fullstack.csv was procesed successful
 bash-5.1#
 ```
+
+Database Schema
+
+![Database Schema](img.png)        
