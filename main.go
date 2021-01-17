@@ -7,6 +7,7 @@ import (
 	"github.com/Javlopez/opiapi/domain"
 	"github.com/Javlopez/opiapi/http/handlers"
 	"github.com/Javlopez/opiapi/infrastructure"
+	ghandlers "github.com/gorilla/handlers"
 	"github.com/gorilla/mux"
 	"log"
 	"net/http"
@@ -40,7 +41,13 @@ func main() {
 		Methods("GET")
 
 	fmt.Printf("Running api on PORT:%s\n", PORT)
-	log.Fatal(http.ListenAndServe(fmt.Sprintf(":%s", PORT), r))
+	log.Fatal(
+		http.ListenAndServe(fmt.Sprintf(":%s", port),
+		ghandlers.CORS(
+			ghandlers.AllowedHeaders([]string{"X-Requested-With", "Content-Type", "Authorization"}),
+			ghandlers.AllowedMethods([]string{"GET", "POST", "PUT", "HEAD", "OPTIONS"}),
+			ghandlers.AllowedOrigins([]string{"*"}))(r)),
+	)
 }
 
 func LoadCsvFile(container infrastructure.Container) {

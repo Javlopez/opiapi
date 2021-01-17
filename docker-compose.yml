@@ -23,7 +23,7 @@ services:
     depends_on:
       - database
     environment:
-      PORT: 8008
+      PORT: 8005
       DB_USER: opi
       DB_PASSWORD: opipostgress
       DB_HOST: opiapi_database_1
