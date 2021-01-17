@@ -33,7 +33,9 @@ docker-compose up -d
 
 ### To run the seed of data you need to access to docker container and run this command the csv file needs to be a valid csv file
 *Caution: this commands run the migrations automatically and therefore the database schema will be created and/or updated, if the databases already exists and contains data with the same information the command will throw an error due violation of unique constraint*
-```bash  
-./opiapi --file=data/puntos_examen_fullstack.csv
+```bash 
+ $docker exec -it opiapi_api_1  bash 
+bash-5.1#./opiapi --file=data/puntos_examen_fullstack.csv
 The file data/puntos_examen_fullstack.csv was procesed successful
+bash-5.1#
 ```
